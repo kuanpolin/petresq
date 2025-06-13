@@ -9,7 +9,8 @@ body, html {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #f0f2f5;
+  background: #f0f2f5 url("../public/background.png");
+  background-size: 30% auto;
 }
 
 .card {
@@ -57,4 +58,21 @@ button:disabled {
 .error {
   color: red;
   margin-top: 1rem;
+}
+
+.match-result {
+  margin-top: 1rem;
+  text-align: left;
+}
+.match-result p {
+  margin: 0.3rem 0;
+}
+.match-result a {
+  color: #007bff;
+  text-decoration: underline;
+}
+.owner-info {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid #007bff;
 }

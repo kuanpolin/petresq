@@ -20,7 +20,7 @@ function App() {
 
     const formData = new FormData()
     formData.append('image', file)
-    const uploadRes = await fetch('https://petresq-dzsk.onrender.com/upload', {
+    const uploadRes = await fetch('http://localhost:3001/upload', {
       method: 'POST',
       body: formData
     })
@@ -35,26 +35,46 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Upload an Image</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="file" accept="image/*" onChange={handleChange} />
-          {preview && <img className="preview" src={preview} alt="Preview" />}
-          <button type="submit" disabled={!file}>Upload</button>
-        </form>
-        {result?.match && (
-          <div className="match-result">
-            <h3>Match Result</h3>
-            <pre>{JSON.stringify(result.match, null, 2)}</pre>
-          </div>
-        )}
-        {result && result.error && (
-          <p className="error">{result.error}</p>
-        )}
+    <>
+      <header className="app-header">
+        <h1>PetResQ</h1>
+      </header>
+      <div className="container">
+        <div className="card">
+          <h2>Upload an Image</h2>
+          <form onSubmit={handleSubmit}>
+            <input type="file" accept="image/*" onChange={handleChange} />
+            {preview && <img className="preview" src={preview} alt="Preview" />}
+            <button type="submit" disabled={!file}>Upload</button>
+          </form>
+
+          {result?.match && (
+            <div className="match-result">
+              <h3>Match Result</h3>
+              <p><strong>Status:</strong> {result.match.status}</p>
+              <p>
+                <strong>Image URL:</strong>{' '}
+                <a href={result.match.imageUrl} target="_blank" rel="noopener noreferrer">
+                  {result.match.imageUrl}
+                </a>
+              </p>
+              <div className="owner-info">
+                <h4>Owner Information</h4>
+                <p><strong>Name:</strong> {result.match.owner.name}</p>
+                <p><strong>Phone:</strong> {result.match.owner.phone}</p>
+                <p><strong>Email:</strong> {result.match.owner.email}</p>
+              </div>
+            </div>
+          )}
+
+          {result && result.error && (
+            <p className="error">{result.error}</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
+
 
 export default App

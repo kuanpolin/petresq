@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+// client/src/App.test.js
+import { render, screen, fireEvent } from '@testing-library/react'
+import App from './App'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('upload button is disabled initially', () => {
+  render(<App />)
+  expect(screen.getByRole('button', { name: /upload/i })).toBeDisabled()
+})
