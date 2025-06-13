@@ -20,7 +20,7 @@ function App() {
 
     const formData = new FormData()
     formData.append('image', file)
-    const uploadRes = await fetch('http://localhost:3001/upload', {
+    const uploadRes = await fetch('https://petresq-dzsk.onrender.com/upload', {
       method: 'POST',
       body: formData
     })
