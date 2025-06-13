@@ -1,7 +1,6 @@
 {
   "name": "petresq",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/kuanpolin/petresq/issues"
   },
-  "homepage": "https://github.com/kuanpolin/petresq#readme"
+  "homepage": "https://github.com/kuanpolin/petresq#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^2.0.1"
+  }
 }
