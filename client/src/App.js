@@ -17,7 +17,7 @@ function App() {
   const handleSubmit = async e => {
     e.preventDefault()
     if (!file) return
-
+    try {
     const formData = new FormData()
     formData.append('image', file)
     const uploadRes = await fetch('https://petresq-dzsk.onrender.com/upload', {
@@ -32,6 +32,10 @@ function App() {
     const matchData = await matchRes.json()
 
     setResult({ ...uploadData, match: matchData })
+    } catch (error) {
+      console.error('Error:', error)
+      setResult({ error: 'Server error, please try again later.' })
+    }
   }
 
   return (
@@ -43,7 +47,7 @@ function App() {
         <div className="card">
           <h2>Upload an Image</h2>
           <form onSubmit={handleSubmit}>
-            <input type="file" accept="image/*" onChange={handleChange} />
+            <input type="file" accept="image/*" onChange={handleChange} aria-label="Upload File" />
             {preview && <img className="preview" src={preview} alt="Preview" />}
             <button type="submit" disabled={!file}>Upload</button>
           </form>
